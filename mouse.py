@@ -101,13 +101,12 @@ class GHubMouse:
         MouseMove.ghub_mouse_move(x, y)
         
     def click(self):
-        delay = random.uniform(0.01, 0.1)
         ghub_mouse.mouse_up()
+        time.sleep(random.uniform(0.001, 0.003))
         ghub_mouse.mouse_down()
-        time.sleep(delay)
+        time.sleep(random.uniform(0.002, 0.005))
         ghub_mouse.mouse_up()
-        delay = random.uniform(0.01, 0.1)
-        time.sleep(delay)
+        time.sleep(random.uniform(0.01, 0.05))
         
     def close(self):
         ghub_mouse.mouse_close()

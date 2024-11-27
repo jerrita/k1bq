@@ -1,7 +1,10 @@
 import sys
+import os
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 import time
 import platform
-import os
 import hashlib
 from time import sleep
 from datetime import datetime
@@ -32,7 +35,8 @@ def generate_random_title(length=10):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
 def set_window_title_random():
-    random_title = generate_random_title()
+    # random_title = generate_random_title()
+    random_title = 'QQ'
     os.system('title ' + random_title)
     return random_title
 
@@ -41,19 +45,9 @@ def ensure_admin():
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
         exit(-1)
 
-def hide_proc():
-    from ctypes import CDLL
-    import os
-    try:
-        hph = CDLL(os.path.join(os.path.dirname(__file__), 'HideProcessHook.dll'))
-    except Exception as e:
-        print('Failed to load HideProcessHook.dll:', e)
-
-
 def main():
-    random_title = set_window_title_random()
     ensure_admin()
-    hide_proc()
+    random_title = set_window_title_random()
     colorant = Colorant(CENTER_X - XFOV // 2, CENTER_Y - YFOV // 2, XFOV, YFOV, FLICKSPEED, MOVESPEED)
 
     print()

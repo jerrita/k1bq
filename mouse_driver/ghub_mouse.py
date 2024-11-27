@@ -50,27 +50,23 @@ def Mouse(flags, x=0, y=0, data=0):
 
 
 def mouse_xy(x, y):  # for import
-    if gmok:
-        return gm.moveR(x, y)
-    return SendInput(Mouse(0x0001, x, y))
+    return gm.moveR(x, y)
+    # return SendInput(Mouse(0x0001, x, y))
 
 
 def mouse_down(key = 1):  # for import
-    if gmok:
-        return gm.press(key)
-    if key == 1:
-        return SendInput(Mouse(0x0002))
-    elif key == 2:
-        return SendInput(Mouse(0x0008))
+    return gm.press(key)
+    # if key == 1:
+    #     return SendInput(Mouse(0x0002))
+    # elif key == 2:
+    #     return SendInput(Mouse(0x0008))
 
 def mouse_up(key = 1):  # for import
-    if gmok:
-        return gm.release()
-    if key == 1:
-        return SendInput(Mouse(0x0004))
-    elif key == 2:
-        return SendInput(Mouse(0x0010))
+    return gm.release()
+    # if key == 1:
+    #     return SendInput(Mouse(0x0004))
+    # elif key == 2:
+    #     return SendInput(Mouse(0x0010))
 
 def mouse_close():  # for import
-    if gmok:
-        return gm.mouse_close()
+    return gm.mouse_close()
